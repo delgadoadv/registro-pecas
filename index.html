@@ -51,7 +51,19 @@
  <script>
     document.getElementById('pecasForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      const mensagem = document.getElementById('mensagem');
       const formData = new FormData(this);
+      
+      // Validação básica no frontend
+      const email = document.getElementById('email').value;
+      if (!email.includes('@')) {
+        mensagem.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+        mensagem.classList.add('bg-red-100', 'text-red-700');
+        mensagem.textContent = 'Por favor, insira um email válido.';
+        setTimeout(() => mensagem.classList.add('hidden'), 5000);
+        return;
+      }
+
       fetch(this.action, {
         method: 'POST',
         body: formData,
@@ -61,15 +73,24 @@
       })
         .then(response => response.json())
         .then(data => {
+          mensagem.classList.remove('hidden');
           if (data.result === 'success') {
-            alert('Peça registrada com sucesso! Tipo: ' + document.getElementById('tipoPeca').value);
+            mensagem.classList.remove('bg-red-100', 'text-red-700');
+            mensagem.classList.add('bg-green-100', 'text-green-700');
+            mensagem.textContent = 'Peça registrada com sucesso! Tipo: ' + document.getElementById('tipoPeca').value;
             this.reset();
           } else {
-            alert('Erro ao enviar: ' + data.message);
+            mensagem.classList.remove('bg-green-100', 'text-green-700');
+            mensagem.classList.add('bg-red-100', 'text-red-700');
+            mensagem.textContent = 'Erro ao enviar: ' + data.message;
           }
+          setTimeout(() => mensagem.classList.add('hidden'), 5000);
         })
         .catch(error => {
-          alert('Erro de conexão: ' + error);
+          mensagem.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+          mensagem.classList.add('bg-red-100', 'text-red-700');
+          mensagem.textContent = 'Erro de conexão: ' + error;
+          setTimeout(() => mensagem.classList.add('hidden'), 5000);
         });
     });
   </script>
