@@ -63,13 +63,22 @@
          <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo da Peça:</label>
          <input type="text" id="modelo_peca" name="modelo_peca" required class="mt-1 block w-full p-2 border rounded-md" placeholder="Pneu Metzeller Tourance ou Pastilha Potenza Semi Metalico">
        </div>
+
        <div>
-         <label for="duracao" class="block text-sm font-medium text-gray-700">Duração em KM</label>
-         <input type="number" id="duracao" name="duracao" required class="mt-1 block w-full p-2 border rounded-md">
+         <label for="km_Inicial" class="block text-sm font-medium text-gray-700">Km Inicial</label>
+         <input type="number" id="km_Inicial" name="km_Inicial" required class="mt-1 block w-full p-2 border rounded-md" placeholder="12325">
+       </div>
+       <div>
+         <label for="km_Final" class="block text-sm font-medium text-gray-700">Km Final</label>
+         <input type="number" id="km_Inicial" name="km_Inicial" required class="mt-1 block w-full p-2 border rounded-md" placeholder="20325">
+       </div> 
+       <div>
+         <label for="km_duracao" class="block text-sm font-medium text-gray-700">Duração em KM</label>
+         <input type="number" id="km_duracao" name="km_duracao" required class="mt-1 block w-full p-2 border rounded-md" placeholder="8000">
        </div>
        <div>
          <label for="observacoes" class="block text-sm font-medium text-gray-700">Observações</label>
-         <textarea id="observacoes" name="observacoes" class="mt-1 block w-full p-2 border rounded-md"></textarea>
+         <textarea id="observacoes" name="observacoes" class="mt-1 block w-full p-2 border rounded-md" placeholder="Digite suas observações como condições de uso como por exemplo uso urbano ou viagens, a quantidade de bagageiros, com garupa, uso urbano ou viagens, cidade que usou ou trajeto da viagem, pressão do pneu e etc..."></textarea>
        </div>
        <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Enviar</button>
      </form>
