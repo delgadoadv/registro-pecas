@@ -1,106 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sistema para registro de historico de durabilidade de peças moto, como pneus e pastilhas de freio">
-  <meta name="keywords" content="registro de peças, peças moto, pneu, pastilha de freio">
-  <meta name="author" content="Paulo Delgado">
-  <title>Registro de Peças</title>
-  <script src="https://cdn.tailwindcss.com"></script>
- <link rel="alternate icon" type="image/png" href="favicon.png">
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-6 text-center">Registro de Peças</h1>
-    <form id="pecasForm" action="https://script.google.com/macros/s/AKfycbxVTWxXfj0E99Jp6TM-WeMF9jxnYipLAkQ0mIDzrqRhtx7vWkbM_kIug530wxsKPbWk/exec" method="POST" class="space-y-4">
-     <div id="mensagem" class="hidden p-4 rounded-md text-center"></div>
-      <div>
-        <label for="nome" class="block text-sm font-medium text-gray-700">Motociclista/Apelido</label>
-        <input type="text" id="nome" name="nome" required class="mt-1 block w-full p-2 border rounded-md">
-      </div>
-      <div>
-        <label for="Instagram" class="block text-sm font-medium text-gray-700">Instagram</label>
-        <input type="text" id="instagram" name="instagram" required class="mt-1 block w-full p-2 border rounded-md">
-      </div>
-      <div>
-        <label for="tipoPeca" class="block text-sm font-medium text-gray-700">Tipo de Peça</label>
-        <select id="tipoPeca" name="tipoPeca" required class="mt-1 block w-full p-2 border rounded-md">
-          <option value="" disabled selected>Selecione o tipo de peça</option>
-          <option value="Pneu">Pneu</option>
-          <option value="Pastilha de Freio">Pastilha de Freio</option>
-        </select>
-      </div>
-      <div>
-        <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo</label>
-        <input type="text" id="modelo" name="modelo" required class="mt-1 block w-full p-2 border rounded-md">
-      </div>
-
+ <html lang="pt-BR">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Sistema para registro de historico de durabilidade de peças moto, como pneus e pastilhas de freio">
+   <meta name="keywords" content="registro de peças, peças moto, pneu, pastilha de freio">
+   <meta name="author" content="Paulo Delgado">
+   <title>Registro de Peças</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+ </head>
+ <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+   <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+     <h1 class="text-2xl font-bold mb-6 text-center">Registro de Peças</h1>
+     <form id="pecasForm" action="https://script.google.com/macros/s/AKfycbxVTWxXfj0E99Jp6TM-WeMF9jxnYipLAkQ0mIDzrqRhtx7vWkbM_kIug530wxsKPbWk/exec" method="POST" class="space-y-4">
+      <div id="mensagem" class="hidden p-4 rounded-md text-center"></div>
        <div>
-        <label for="kmInicial" class="block text-sm font-medium text-gray-700">Km Inicial</label>
-        <input type="number" id="kmInicial" name="kmInicial" required class="mt-1 block w-full p-2 border rounded-md">
-      </div>
+         <label for="nome" class="block text-sm font-medium text-gray-700">Nome/Apelido</label>
+         <input type="text" id="nome" name="nome" required class="mt-1 block w-full p-2 border rounded-md">
+       </div>
        <div>
-        <label for="kmFinal" class="block text-sm font-medium text-gray-700">Km Final</label>
-        <input type="number" id="Km Final" name="Km Final" required class="mt-1 block w-full p-2 border rounded-md">
-      </div>      
-      <div>
-        <label for="duracao" class="block text-sm font-medium text-gray-700">Duração em KM</label>
-        <input type="number" id="duracao" name="duracao" required class="mt-1 block w-full p-2 border rounded-md">
-      </div>
-      <div>
-        <label for="observacoes" class="block text-sm font-medium text-gray-700">Observações</label>
-        <textarea id="observacoes" name="observacoes" class="mt-1 block w-full p-2 border rounded-md"></textarea>
-      </div>
-      <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Enviar</button>
-    </form>
-<p class="mt-4 text-center"><a href="dados.html" class="text-blue-600 hover:underline">Ver tabela de dados</a></p>
-  </div>
- <script>
-    document.getElementById('pecasForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const mensagem = document.getElementById('mensagem');
-      const formData = new FormData(this);
-      
-      // Validação básica no frontend
-      const email = document.getElementById('email').value;
-      if (!email.includes('@')) {
-        mensagem.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-        mensagem.classList.add('bg-red-100', 'text-red-700');
-        mensagem.textContent = 'Por favor, insira um email válido.';
-        setTimeout(() => mensagem.classList.add('hidden'), 5000);
-        return;
-      }
-
-      fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-        .then(response => response.json())
-        .then(data => {
-          mensagem.classList.remove('hidden');
-          if (data.result === 'success') {
-            mensagem.classList.remove('bg-red-100', 'text-red-700');
-            mensagem.classList.add('bg-green-100', 'text-green-700');
-            mensagem.textContent = 'Peça registrada com sucesso! Tipo: ' + document.getElementById('tipoPeca').value;
-            this.reset();
-          } else {
-            mensagem.classList.remove('bg-green-100', 'text-green-700');
-            mensagem.classList.add('bg-red-100', 'text-red-700');
-            mensagem.textContent = 'Erro ao enviar: ' + data.message;
-          }
-          setTimeout(() => mensagem.classList.add('hidden'), 7000);
-        })
-        .catch(error => {
-          mensagem.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-          mensagem.classList.add('bg-red-100', 'text-red-700');
-          mensagem.textContent = 'Erro de conexão: ' + error;
-          setTimeout(() => mensagem.classList.add('hidden'), 5000);
-        });
-    });
-  </script>
-  </body>
-</html>
+         <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+         <input type="email" id="email" name="email" required class="mt-1 block w-full p-2 border rounded-md">
+       </div>
+       <div>
+         <label for="tipoPeca" class="block text-sm font-medium text-gray-700">Tipo de Peça</label>
+         <select id="tipoPeca" name="tipoPeca" required class="mt-1 block w-full p-2 border rounded-md">
+           <option value="" disabled selected>Selecione o tipo de peça</option>
+           <option value="Pneu">Pneu</option>
+           <option value="Pastilha de Freio">Pastilha de Freio</option>
+         </select>
+       </div>
+       <div>
+         <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo</label>
+         <input type="text" id="modelo" name="modelo" required class="mt-1 block w-full p-2 border rounded-md">
+       </div>
+       <div>
+         <label for="duracao" class="block text-sm font-medium text-gray-700">Duração em KM</label>
+         <input type="number" id="duracao" name="duracao" required class="mt-1 block w-full p-2 border rounded-md">
+       </div>
+       <div>
+         <label for="observacoes" class="block text-sm font-medium text-gray-700">Observações</label>
+         <textarea id="observacoes" name="observacoes" class="mt-1 block w-full p-2 border rounded-md"></textarea>
+       </div>
+       <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Enviar</button>
+     </form>
+ <p class="mt-4 text-center"><a href="dados.html" class="text-blue-600 hover:underline">Ver tabela de dados</a></p>
+   </div>
+  <script>
+     document.getElementById('pecasForm').addEventListener('submit', function(e) {
+       e.preventDefault();
+       const mensagem = document.getElementById('mensagem');
+       const formData = new FormData(this);
+       
+       // Validação básica no frontend
+       const email = document.getElementById('email').value;
+       if (!email.includes('@')) {
+         mensagem.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+         mensagem.classList.add('bg-red-100', 'text-red-700');
+         mensagem.textContent = 'Por favor, insira um email válido.';
+         setTimeout(() => mensagem.classList.add('hidden'), 5000);
+         return;
+       }
+ 
+       fetch(this.action, {
+         method: 'POST',
+         body: formData,
+         headers: {
+           'Accept': 'application/json'
+         }
+       })
+         .then(response => response.json())
+         .then(data => {
+           mensagem.classList.remove('hidden');
+           if (data.result === 'success') {
+             mensagem.classList.remove('bg-red-100', 'text-red-700');
+             mensagem.classList.add('bg-green-100', 'text-green-700');
+             mensagem.textContent = 'Peça registrada com sucesso! Tipo: ' + document.getElementById('tipoPeca').value;
+             this.reset();
+           } else {
+             mensagem.classList.remove('bg-green-100', 'text-green-700');
+             mensagem.classList.add('bg-red-100', 'text-red-700');
+             mensagem.textContent = 'Erro ao enviar: ' + data.message;
+           }
+           setTimeout(() => mensagem.classList.add('hidden'), 7000);
+         })
+         .catch(error => {
+           mensagem.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+           mensagem.classList.add('bg-red-100', 'text-red-700');
+           mensagem.textContent = 'Erro de conexão: ' + error;
+           setTimeout(() => mensagem.classList.add('hidden'), 5000);
+         });
+     });
+   </script>
+   </body>
+ </html>
