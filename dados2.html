@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados Registrados</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Sistema para registro de historico de durabilidade de peças moto, como pneus e pastilhas de freio">
+  <meta name="keywords" content="registro de peças, peças moto, pneu, durabilidade, pastilha de freio, delgado, delgadoadv">
+  <meta name="author" content="Paulo Delgado">
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-6 text-center">Dados Registrados</h1>
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border p-2">Nome/Apelido</th>
+          <th class="border p-2">E-mail</th>
+          <th class="border p-2">Tipo de Peça</th>
+          <th class="border p-2">Modelo</th>
+          <th class="border p-2">Duração (KM)</th>
+          <th class="border p-2">Observações</th>
+          <th class="border p-2">Data</th>
+        </tr>
+      </thead>
+      <tbody id="dadosTabela"></tbody>
+    </table>
+    <p class="mt-4 text-center"><a href="index.html" class="text-blue-600 hover:underline">Voltar ao Formulário</a></p>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxVTWxXfj0E99Jp6TM-WeMF9jxnYipLAkQ0mIDzrqRhtx7vWkbM_kIug530wxsKPbWk/exec'; //  URL do Apps Script
+
+    fetch(scriptURL)
+      .then(response => response.json())
+      .then(data => {
+        const tabela = document.getElementById('dadosTabela');
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="border p-2">${row.nome}</td>
+            <td class="border p-2">${row.email}</td>
+            <td class="border p-2">${row.tipoPeca}</td>
+            <td class="border p-2">${row.modelo}</td>
+            <td class="border p-2">${row.duracao}</td>
+            <td class="border p-2">${row.observacoes || '-'}</td>
+            <td class="border p-2">${new Date(row.data).toLocaleDateString('pt-BR')}</td>
+          `;
+          tabela.appendChild(tr);
+        });
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        document.getElementById('dadosTabela').innerHTML = '<tr><td colspan="7" class="text-center p-4">Erro ao carregar os dados.</td></tr>';
+      });
+  </script>
+</body>
+</html>
