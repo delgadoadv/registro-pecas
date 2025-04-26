@@ -1,9 +1,9 @@
-// function calcularDuracaoKm() {
+ function calcularDuracaoKm() {
     let kmInicial = parseFloat(document.getElementById('km_inicial').value) || 0;
     let kmFinal = parseFloat(document.getElementById('km_final').value) || 0;
     let duracao = kmFinal - kmInicial;
     document.getElementById('duracao_km').value = duracao >= 0 ? duracao : 0;
-// }
+ }
 
 document.getElementById('km_inicial').addEventListener('input', calcularDuracaoKm);
 document.getElementById('km_final').addEventListener('input', calcularDuracaoKm);
@@ -39,4 +39,4 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     }, 5000);
 
     // Enviar o formulário
-    this.submit();
+    
