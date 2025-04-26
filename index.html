@@ -83,7 +83,7 @@
             mensagem.classList.add('bg-red-100', 'text-red-700');
             mensagem.textContent = 'Erro ao enviar: ' + data.message;
           }
-          setTimeout(() => mensagem.classList.add('hidden'), 5000);
+          setTimeout(() => mensagem.classList.add('hidden'), 7000);
         })
         .catch(error => {
           mensagem.classList.remove('hidden', 'bg-green-100', 'text-green-700');
