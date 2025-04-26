@@ -27,7 +27,7 @@
       </thead>
       <tbody id="dadosTabela"></tbody>
     </table>
-    <p class="mt-4 text-center"><a href="index.html" class="text-blue-600 hover:underline">Voltar ao Formulário</a></p>
+    <p class="mt-4 text-center"><a href="index3.html" class="text-blue-600 hover:underline">Voltar ao Formulário</a></p>
   </div>
 
   <script>
@@ -41,9 +41,13 @@
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td class="border p-2">${row.nome}</td>
-            <td class="border p-2">${row.email}</td>
+            <td class="border p-2">${row.instagram}</td>
+            <td class="border p-2">${row.fabricante_moto}</td>
+            <td class="border p-2">${row.modelo_moto}</td>
             <td class="border p-2">${row.tipoPeca}</td>
-            <td class="border p-2">${row.modelo}</td>
+            <td class="border p-2">${row.ano_moto,}</td>
+            <td class="border p-2">${row.ano_moto,}</td>
+            <td class="border p-2">${row.ano_moto,}</td>
             <td class="border p-2">${row.duracao}</td>
             <td class="border p-2">${row.observacoes || '-'}</td>
             <td class="border p-2">${new Date(row.data).toLocaleDateString('pt-BR')}</td>
