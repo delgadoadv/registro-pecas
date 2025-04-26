@@ -21,7 +21,14 @@
       </div>
       <div>
         <label for="tipoPeca" class="block text-sm font-medium text-gray-700">Tipo de Peça</label>
-        <input type="text" id="tipoPeca" name="tipoPeca" required class="mt-1 block w-full p-2 border rounded-md">
+        <select id="tipoPeca" name="tipoPeca" required class="mt-1 block w-full p-2 border rounded-md">
+          <option value="" disabled selected>Selecione o tipo de peça</option>
+          <option value="Pneu">Pneu</option>
+          <option value="Pastilha de Freio">Pastilha de Freio</option>
+        </select>
+
+
+        
       </div>
       <div>
         <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo</label>
