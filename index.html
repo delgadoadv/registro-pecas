@@ -3,10 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema para registro de historico de durabilidade de peças moto, como pneus e pastilhas de freio">
-    <meta name="keywords" content="registro, durabilidade, cadastro, peças, peças, pecas, moto, pneu, pastilha, freio">
-    <meta name="author" content="Paulo Delgado">
-    <link rel="alternate icon" type="image/png" href="favicon.png">
     <title>Registro de Peças</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -41,6 +37,9 @@
             <option value="Pastilha de Freio">Pastilha de Freio</option>
         </select>
 
+        <label for="marca_modelo_peca">Marca/Modelo Peça:</label>
+        <input type="text" id="marca_modelo_peca" name="marca_modelo_peca" placeholder="Ex.: Pirelli Diablo Rosso" required>
+
         <label for="roda">Roda:</label>
         <select id="roda" name="roda" required>
             <option value="">Selecione a roda</option>
@@ -62,6 +61,10 @@
 
         <button type="submit">Cadastrar</button>
     </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
     <script src="script.js"></script>
 </body>
