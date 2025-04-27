@@ -17,9 +17,12 @@
         <tr class="bg-gray-200">
           <th class="border p-2">Motociclista/Apelido</th>
           <th class="border p-2">Instagram</th>
-          
           <th class="border p-2">Tipo de Peça</th>
-          <th class="border p-2">Modelo</th>
+          <th class="border p-2">Modelo Moto</th>
+          <th class="border p-2">Ano Moto</th>
+          <th class="border p-2">Tipo de Peça</th>
+          <th class="border p-2">Km Inicial</th>
+          <th class="border p-2">Km Final</th>
           <th class="border p-2">Duração (KM)</th>
           <th class="border p-2">Observações</th>
           <th class="border p-2">Data</th>
@@ -46,9 +49,11 @@
             <td class="border p-2">${row.modelo_moto}</td>
             <td class="border p-2">${row.tipoPeca}</td>
             <td class="border p-2">${row.ano_moto,}</td>
-            <td class="border p-2">${row.ano_moto,}</td>
-            <td class="border p-2">${row.ano_moto,}</td>
-            <td class="border p-2">${row.duracao}</td>
+            <td class="border p-2">${row.tipoPeca,}</td>
+            <td class="border p-2">${row.modelo_peca,}</td>
+            <td class="border p-2">${row.km_Inicial}</td>
+             <td class="border p-2">${row.km_Inicial}</td>
+              <td class="border p-2">${row.km_final}</td>
             <td class="border p-2">${row.observacoes || '-'}</td>
             <td class="border p-2">${new Date(row.data).toLocaleDateString('pt-BR')}</td>
           `;
